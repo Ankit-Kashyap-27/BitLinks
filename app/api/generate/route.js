@@ -7,11 +7,11 @@ export async function POST(request) {
     const collection = db.collection("url")
 
     //Check if the short URL exist
-const doc =await collection.findOne({shorturl:body.shorturl})
-if(doc){
-     return Response.json({ success: false, error: true, message: 'URL already exists !!' })
+    const doc = await collection.findOne({ shorturl: body.shorturl })
+    if (doc) {
+        return Response.json({ success: false, error: true, message: 'URL already exists !!' })
 
-}
+    }
 
     const result = await collection.insertOne({
         url: body.url,
